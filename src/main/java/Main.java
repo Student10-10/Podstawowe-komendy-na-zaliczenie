@@ -238,5 +238,68 @@ x % 5   // podzielna przez 5
   String	tekst	"arek"
   char	jeden znak	'a'
   boolean	prawda/fałsz	true / false
+     ----------------------------------------------------------------------------------------
+    // Ostanie zadanie zaliczeniowe:
+
+    Zadanie 30. Wyszukiwanie wspólnych elementów dwóch tablic znakowych
+
+    Opis zadania:
+    Napisz program w języku Java, który:
+
+    1. Wczyta od użytkownika dwie tablice znaków (np. dwa oddzielne ciągi znaków).
+    2. Znajdzie i wypisze znaki, które występują w obu tablicach.
+
+        Wspólne znaki nie powinny się powtarzać w wyniku.
+    3. Wyświetli komunikat w formacie:
+
+        „Wspólne znaki: a, e, k"
+        Jeśli nie ma wspólnych znaków: „Brak wspólnych znaków."
+
+
+
+    Po zakończeniu konieczne jest odesłanie linka do repozytorium z kodem jak odpowiedź na ten mail.
+    ----------------------------------------------------------------------------------------
+    import java.util.Scanner;
+
+    public class Main {
+        public static void main(String[] args) {
+
+            Scanner scanner = new Scanner(System.in);
+
+            char[] t1 = scanner.nextLine().toCharArray();
+            char[] t2 = scanner.nextLine().toCharArray();
+
+            boolean znaleziono = false;
+
+            for (int i = 0; i < t1.length; i++) {
+                for (int j = 0; j < t2.length; j++) {
+
+                    if (t1[i] == t2[j]) {
+
+                        boolean juzByl = false;
+                        for (int k = 0; k < i; k++) {
+                            if (t1[k] == t1[i]) {
+                                juzByl = true;
+                            }
+                        }
+
+                        if (!juzByl) {
+                            System.out.print(t1[i] + " ");
+                            znaleziono = true;
+                        }
+                    }
+                }
+            }
+
+            if (!znaleziono) {
+                System.out.println("Brak wspólnych znaków.");
+            }
+
+            scanner.close();
+        }
+    }
+
+
+
   
   
